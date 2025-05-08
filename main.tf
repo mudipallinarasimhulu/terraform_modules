@@ -1,5 +1,6 @@
 #AWS vpc resource 
 resource "aws_vpc" "Web_VPC" {
+
   cidr_block = var.cidr_vpc
 
   enable_dns_support = true
@@ -20,8 +21,9 @@ vpc.id = var.aws_vpc.web_vpc
 
   tags {
      Enviroment = var.enviroment_tags
- }
+  }
 }
 
-# aws subnet for vpc
+# aws subnet for web_vpc
+
 
