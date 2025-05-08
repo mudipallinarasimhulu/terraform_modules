@@ -1,4 +1,4 @@
-varibale "cidr_vpc" {
+varibale "cidr_vpc"  {
   type = string 
 
 }
