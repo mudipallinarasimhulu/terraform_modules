@@ -20,7 +20,7 @@ resource "aws_internet_gateway" "wp_ig" {
 
 # aws subnet for web_vpc 
 
-resource "aws_subnet" "wp_public_subnet" {
+resource "aws_subnet" "wp_subnet" {
   vpc_id     = aws_vpc.wp_vpc.id
   cidr_block = var.cidr_subnet
   map_public_ip_on_launch = true  
@@ -35,7 +35,7 @@ resource "aws_subnet" "wp_public_subnet" {
 resource "aws_route_table" "wp_route" {
  vpc_id = aws_vpc.wp_vpc.id
  route  { 
-  cidr_block = var.aws_vpc.wp_vpc.cidr_block
+  cidr_block = var.cidr_route
    gateway_id = aws_internet_gateway.wp_ig.id
  }
  tags = {
@@ -49,8 +49,4 @@ resource "aws_route_associations" "wp_associtation" {
   route_table_id = aws_route_table.wp_route.id
 }
 
-#aws private subente 
-resource "aws_subnet" "wp_private" {
-  vpc_id = aws_vpc.wp_vpc.id
-  cidr_block =var.cidr_subnet
-}
+# aws nat gateway creation
