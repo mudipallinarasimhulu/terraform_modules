@@ -45,5 +45,7 @@ resource "aws_route_table" "wp_route" {
 
 # Aws route associations
 resource "aws_route_associations" "wp_associtation" {
-  
+  subnet_id = aws_vpc.wp_vpc.id
+  route_table_id = aws_route_table.wp_route.id
 }
+
